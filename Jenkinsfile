@@ -99,16 +99,16 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 	   }
     }
     
-  //  stage('Build Docker Image') {
-	 //   steps{
-   //  sh "docker -H  tcp://2.tcp.eu.ngrok.io:16232 build -t devopsexamplenew123456:${env.BUILD_NUMBER} ."
-	  //  }
-   // }
+    stage('Build Docker Image') {
+	    steps{
+     sh "docker -H  tcp://2.tcp.eu.ngrok.io:16093  build -t reportgen:${env.BUILD_NUMBER} ."
+	    }
+    }
     
     stage('Deploy Docker Image'){
 	    steps{
       	echo "Docker Image Tag Name: ${dockerImageTag}"
-	sh "docker -H  tcp://5.tcp.eu.ngrok.io:10363 run --name devopsexamplenew123:86 -d -p 2222:2222 devopsexamplenew123456789:${env.BUILD_NUMBER}"
+	sh "docker -H  tcp://2.tcp.eu.ngrok.io:16093  run --name reportgen:86 -d -p 2222:2222 reportgen:${env.BUILD_NUMBER}"
 	    }
     }
 	  
