@@ -27,7 +27,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
             }
             steps {
 		
-		git 'https://github.com/EmilBC/Gouvernance.git'
+		git 'https://github.com/EmilBC/ReportGen.git'
 		
 		    
                 echo "Build stage Prod."
@@ -53,7 +53,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
             }
 		 steps {
 		
-		git 'https://github.com/EmilBC/Gouvernance.git'
+		git 'https://github.com/EmilBC/ReportGen.git'
                 echo "Build stage Dev"
          script{      
  if(params.CHECK_TEST==false){
