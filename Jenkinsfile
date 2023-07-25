@@ -101,7 +101,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
     
     stage('Build Docker Image') {
 	    steps{
-     bat "docker -H  tcp://2.tcp.eu.ngrok.io:16093:18288  build -t docgen:${env.BUILD_NUMBER} ."
+     bat "docker -H  tcp://2.tcp.eu.ngrok.io:16093  build -t docgen:${env.BUILD_NUMBER} ."
 	   }
     }
     
