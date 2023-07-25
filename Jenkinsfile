@@ -73,7 +73,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 
 stage('Execute SQL File') {
       steps {
-        bat 'mysql -h 10.12.1.182:3306 -U root -p root < /path/to/your/repository/file.sql'
+        bat 'mysql -h 10.12.1.182:3306 -U root -p root < \\target\\integ\\file.sql'
       }
     }
 
