@@ -73,7 +73,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 
 stage('Execute SQL File') {
       steps {
-        bat "mysql -h localhost -P 3306 -u root -proot -e 'CREATE DATABASE IF NOT EXISTS testJenkins;'"
+        bat "mysql -h localhost -P 3306 -u root -proot"
       }
     }
 
