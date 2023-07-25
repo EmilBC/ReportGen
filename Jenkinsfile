@@ -143,12 +143,12 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 	   }
     }
     
-    stage('Deploy Docker Image'){
-	    steps{
-      	echo "Docker Image Tag Name: ${dockerImageTag}"
-	bat "docker -H  tcp://2.tcp.eu.ngrok.io:16093  run  --name docgen:${env.BUILD_NUMBER} -d -p 2222:2222 docgen:${env.BUILD_NUMBER} auto_assign_name: false"
-	    }
-    }
+    //stage('Deploy Docker Image'){
+	//    steps{
+      	//echo "Docker Image Tag Name: ${dockerImageTag}"
+	//bat "docker -H  tcp://2.tcp.eu.ngrok.io:16093  run  --name docgen:${env.BUILD_NUMBER} -d -p 2222:2222 docgen:${env.BUILD_NUMBER} auto_assign_name: false"
+	  //  }
+    //}
 
 
 
