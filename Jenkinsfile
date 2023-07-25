@@ -73,8 +73,8 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 
 stage('Execute SQL File') {
       steps {
-        bat "mysql -h localhost -P 3306 -u root -proot"
-	      bat "select * from city"
+        bat "mysql -u root -proot world -h localhost -P 3306 < file.sql"
+	    
       }
     }
 
