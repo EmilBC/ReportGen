@@ -27,7 +27,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
             }
             steps {
 		
-		git 'https://github.com/EmilBC/Jenkins-Test.git'
+		git 'https://github.com/EmilBC/Gouvernance.git'
 		
 		    
                 echo "Build stage Prod."
@@ -53,13 +53,13 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
             }
 		 steps {
 		
-		git 'https://github.com/EmilBC/Jenkins-Test.git'
+		git 'https://github.com/EmilBC/Gouvernance.git'
                 echo "Build stage Dev"
          script{      
  if(params.CHECK_TEST==false){
-		sh "'${mvnHome}/bin/mvn' -B -DskipTests clean package"
+		bat "${mvnHome}\\bin\\mvn.cmd -B -DskipTests clean package"
 		       }else{
-			    sh "'${mvnHome}/bin/mvn' -B  clean package"   
+			 bat "${mvnHome}\\bin\\mvn.cmd -B  clean package"   
 		       }
 	 }
             }
@@ -77,12 +77,12 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 	  checkout scm
 	      }    }
     stage('SonarQube Analysis') {
-	    steps{
+	   steps{
 		       
       script{
 	 if (params.RUN_SONNAR ==true){
       withSonarQubeEnv() {
-      sh "${mvnHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=testoutsidegit -Dsonar.projectName='testoutsidegit'"
+      bat "${mvnHome}\\bin\\mvn clean verify sonar:sonar -Dsonar.projectKey=testoutsidegit -Dsonar.projectName='testoutsidegit'"
       }
       }
       }
@@ -91,27 +91,27 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
   
   
     
-   stage('Initialize Docker'){    
-	   steps{
-	          script{
-	  env.PATH = "${dockerHome}/bin:${env.PATH}"     
-		  }
-	   }
-    }
+  //stage('Initialize Docker'){    
+	  // steps{
+	      //    script{
+	 // env.PATH = "${dockerHome}/bin:${env.PATH}"     
+		//  }
+	 //  }
+ //   }
     
     stage('Build Docker Image') {
 	    steps{
-     sh "docker -H  tcp://2.tcp.eu.ngrok.io:16093  build -t reportgen:${env.BUILD_NUMBER} ."
-	    }
+     bat "docker -H  tcp://2.tcp.eu.ngrok.io:16093:18288  build -t docgen:${env.BUILD_NUMBER} ."
+	   }
     }
     
     stage('Deploy Docker Image'){
 	    steps{
       	echo "Docker Image Tag Name: ${dockerImageTag}"
-	sh "docker -H  tcp://2.tcp.eu.ngrok.io:16093  run --name reportgen:86 -d -p 2222:2222 reportgen:${env.BUILD_NUMBER}"
+	bat "docker -H  tcp://2.tcp.eu.ngrok.io:16093  run  --name docgen:${env.BUILD_NUMBER} -d -p 2222:2222 docgen:${env.BUILD_NUMBER}"
 	    }
     }
-	  
+
 
 
 
