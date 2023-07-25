@@ -73,7 +73,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 
 stage('Execute SQL File') {
       steps {
-        bat 'mysql -h 10.12.1.182:3306 -U root -d gouv -a -f /path/to/your/repository/file.sql'
+        bat 'C://Program Files//MySQL//MySQL Server 8.0//bin//mysql -h 10.12.1.182:3306 -U root -d gouv -a -f /path/to/your/repository/file.sql'
       }
     }
 
