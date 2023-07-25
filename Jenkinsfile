@@ -6,6 +6,11 @@ pipeline {
    dockerImage=""
 dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 		 dockerHome = tool 'MyDocker' 
+		  NEXUS_VERSION = "nexus3"
+        NEXUS_PROTOCOL = "http"
+        NEXUS_URL = "10.12.1.254:8081"
+        NEXUS_REPOSITORY = "jarwarrepo"
+        NEXUS_CREDENTIAL_ID = "nexus-user-credentials"
 }
     parameters {
         booleanParam(name: "BUILD_FOR_PRODUCTION", defaultValue: false, description: "Check if it's for prod")
