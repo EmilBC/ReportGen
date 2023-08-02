@@ -40,13 +40,13 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 	   steps{
 		       
       script{
-	 if (params.RUN_SONNAR ==true){
+	
       withSonarQubeEnv() {
       bat "${mvnHome}\\bin\\mvn clean verify sonar:sonar -Dsonar.projectKey=projectABC -Dsonar.projectName='projectABC'"
       }
       }
       }
-	    }
+	    
     }	
   
 
