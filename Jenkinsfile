@@ -28,7 +28,7 @@ dockerImageTag = "devopsexamplenew${env.BUILD_NUMBER}"
 
 
 
-	    
+	 stages {
     
 
 	    
